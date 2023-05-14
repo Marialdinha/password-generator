@@ -1,32 +1,25 @@
 //Write Password function
+
 function writePassword(){
-    var password = null;
-    var passwordLength = getPasswordLength();
-    var isLowerCase = getLowerCaseOption();
+    let passLength = prompt("How many letters in your password? (Choose between 10 and 128)")
 
-    //Creating password
-    password = "User selected " + password +  " letters, and lowercase = " + isLowerCase 
-    // password = createPassword(passwordLength,isLowerCase);
-
-
-    document.getElementById("password").value = password
+    if(passLength != null){
+        if( passLength < 10 || passLength > 128){
+            alert("Try Again (Choose between 10 and 128)")
+            writePassword();
+        }
+        else if(passLength != null) {
+    
+        var isLowerCase = getLowerCaseOption();
+    
+        //Creating password
+        let password = createPassword(passLength, 
+                                     isLowerCase);
+    
+        document.getElementById("password").value = password
+        }
+    }
 }
-
-
-//Get Password Length function
-function getPasswordLength(){
-    var passwordLength = prompt("How many letters in your password? (Choose between 10 and 128)");
-
-    // need to catch cancel
-    // passwordLength is passing previous value
-if (passwordLength < 10 || passwordLength > 128){
-    alert("Try Again (Choose between 10 and 128)")
-    getPasswordLength();
-} 
-    return passwordLength;
-
-}
-
 
 // Get Password Lowercase Option
 function getLowerCaseOption(){
@@ -36,23 +29,24 @@ function getLowerCaseOption(){
     return isLowerCase;
 }
 
-function createPassword(passwordLength,isLowerCase){
+// Ceate Password Function
+function createPassword(passwordLength,
+                        isLowerCase){
     var numbers = "0123456789";
     var lower = "abcdefghijklmnopqrstuvxz";
     var upper = "ABCDEFGHIJKLMNOPQRSTUVXZ";
-    var special = "!@#$%^&*()"
+    var special = "!@#$%^&*()";
+    var chars = "";
+    var finalPassword = "";
 
-    var chars = null
+    // Constructing chars variable accordingly to choosen options
     if (isLowerCase) {chars += lower}
 
-    var finalPassword = null;
-
-    for (var i = 0; i <= passwordLength; i++){
-        var randomcharacter = Math.floor(Math.random) * chars.length;
+    // For loop to create a random variable
+    for (var i = 0; i <= passwordLength - 1; i++){
+        var randomcharacter = Math.floor(Math.random() * chars.length);
         finalPassword += chars.substring(randomcharacter, randomcharacter +1)
-
     }
-
     return finalPassword
 }
 
@@ -62,9 +56,18 @@ function clearPassword(){
     document.getElementById("password").value =  clrPassword
 }
 
+//Copy function
+function copyPassword(){
+    var copiedPassword = null;
+    document.getElementById("password").value =  "Youe copied password is = " + copiedPassword
+}
 
-//add event listener for generate and clear buttons
+//add event listener for generate, clear and copy buttons
 var generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", writePassword);
+
 var clearBtn = document.querySelector("#clear");
 clearBtn.addEventListener("click", clearPassword)
+
+var copyBtn = document.querySelector("#copy");
+copyBtn.addEventListener("click", copyPassword)
