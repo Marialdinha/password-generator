@@ -13,7 +13,7 @@ This project showcases my password generator.<br />
 In this modulo I learned .............<br /> <br />  <br />
 
 ## Screenshot
- ![Web page screenshot](XXXXXXXXXXXXXXXX./assets/images/Portifolio_Page.png) <br /> <br /> <br />
+ ![Web page screenshot](./assets/images/Password_Generator_Screenshot.png) <br /> <br /> <br />
 
 ## Link
-XXXXXXXXXXXXXXXXhttps://marialdinha.github.io/Portfolio-Page/
+https://marialdinha.github.io/password-generator/
